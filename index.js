@@ -21,6 +21,11 @@ app.use( express.json() ); // Parse JSON contents
 app.use( '/api/auth', require( './routes/auth' ) ); // Auth routes
 app.use( '/api/events', require( './routes/events' ) ); // Events routes
 
+// Default route
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
 app.listen( port, () => {
   console.log( `Server started on port ${ port }` );
 });
