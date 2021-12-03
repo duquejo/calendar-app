@@ -105,10 +105,12 @@ const userTokenRevalidate = async ( req, res = response ) => {
 
   // Generate JWT Token
   const token = await jwtTokenGenerate( uid, name );
-
+  
   res.json({
     ok: true,
-    token
+    token,
+    name,
+    uid
   });
 };
 
